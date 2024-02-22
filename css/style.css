@@ -2,12 +2,9 @@
     text-decoration: none;
     padding: 0;
     margin: 0;
-    /* overflow: hidden; */
-
 }
 
 body{
-   
 }
 
 
@@ -16,33 +13,31 @@ header {
     align-items: end; 
     justify-items: center;
     /* background-color: red; */
-    grid-template-rows: auto 1fr;
-     background-color: #21315A;
+    background-color: #21315A;
 }
-  
+
 
 img{
     width: 715px;
-    display: block;
-    margin: auto;
 }
 
 header h1{
-    grid-area: 2 / 1 / 2 / 2; 
+    grid-area: 2 / 1 / 2 /2; 
     font-size: 64px;
     font-style: italic;
     color: #94CE5A;
     /* background-color: aliceblue; */
     text-align: center;
     font-family: "Roboto", sans-serif;
+    font-weight: 700;
     display: grid; 
+    margin-bottom: 30px;
 }
 
 main
 {
     display: grid;
     max-width:1000px;
-    /* height: 100dvh; */
     margin: auto; 
     padding:20px;
     background-color: white;
