@@ -1,72 +1,126 @@
-*{
-    text-decoration: none;
-    padding: 0;
-    margin: 0;
+body {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
 }
-
-body{
-}
-
-
 header {
-    display: grid; 
-    align-items: end; 
-    justify-items: center;
-    /* background-color: red; */
-    background-color: #21315A;
-}
-
-
-img{
-    width: 715px;
-}
-
-header h1{
-    grid-area: 2 / 1 / 2 /2; 
-    font-size: 64px;
-    font-style: italic;
-    color: #94CE5A;
-    /* background-color: aliceblue; */
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    display: grid; 
-    margin-bottom: 30px;
-}
-
-main
-{
     display: grid;
-    max-width:1000px;
-    margin: auto; 
-    padding:20px;
-    background-color: white;
+    align-items: end;
+    justify-items: center;
+    background-color: #21315a;
+}
+h1 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 64px;
+    padding-bottom: 36px;
+}
+h2 {
+    font-weight: 900;
+    font-size: 32px;
+}
+h1,
+h2 {
+    text-align: center;
+    color: #94ce5a;
+}
+header > img,
+h1 {
+    grid-area: 1 / 1 / 2 / 2;
+}
+header > img {
+    max-width: 715px;
+}
+
+main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
 }
 
-main article
-{
-    background-color: #21315A;
+article {
+    background-color: #21315a;
+    padding: 12px;
+
+    /* Cette partie n’est pas obligatoire, c’est une technique qui me permet d’espacer le h2 et le p sans leur parler directement : à la place, on pourrait ne pas faire de grille ici et mettre une marge verticale de 10px entre le h1 et le p (un margin-bottom sur le h1, par exemple) */
+    /* display: grid;
     gap: 10px;
-    padding: 12px
-
+    align-content: start; */
 }
 
-main article h1{
-  color: #94CE5A;
-  font-size: 32px;
-  font-weight: 900;
-  font-family: "Roboto", sans-serif;
+.article h2 {
+    font-weight: 900;
+    font-style: normal;
+    font-size: 32px;
+    padding-bottom: 13px;
+    display: flex;
+    justify-content: center;
+    color: #94ce5a;
 }
 
-main article p{
-    margin-top: 10px;
-    color: white;
-    font-size: 16px;
+.article p {
     font-weight: 400;
-    font-family:"Roboto", sans-serif;
-    
+    font-style: normal;
+    font-size: 16px;
+    color: white;
+}
+
+/* ---------------section---------------------------------------- */
+
+.section_one
+{
+    background-color: #242830;
+    padding: 20px;
+}
+
+
+.section_two
+{
+   background-color: #F5F7F8; 
+   padding: 20px;
+
+}
+
+.section_three
+{
+   background-color: #000000; 
+   padding: 20px;
+
+}
+
+
+
+
+/* ---------------container------------------------------------- */
+
+
+.container
+{
+    max-width: 960px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    align-items:center;
+    gap:20px;
+}
+
+
+
+/* ---------------mobile------------------------------------ */
+
+@media (max-width: 830px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 0px;
+    }
+    .container > img {
+        order: 1;
+    }
+    header h1 {
+        font-size: 38px;
+    }
 }
