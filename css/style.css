@@ -23,15 +23,33 @@ h1 {
     font-size: 64px;
     padding-bottom: 36px;
 }
-h2 {
-    font-weight: 900;
-    font-size: 32px;
-}
+
 h1,
 h2 {
     text-align: center;
     color: #94ce5a;
 }
+
+
+article h2 {
+    font-weight: 900;
+    font-style: normal;
+    font-size: 32px;
+    padding-bottom: 13px;
+    display: flex;
+    justify-content: center;
+    color: #94ce5a;
+}
+
+article p {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: white;
+}
+
+
+
 header > img,
 h1 {
     grid-area: 1 / 1 / 2 / 2;
@@ -114,7 +132,7 @@ main
     /* padding: 8%; */
 }
 
-
+/* --------------------------hover--------------- */
 
 article {
     background-color: #21315a;
@@ -122,6 +140,27 @@ article {
     display: grid;
     gap: 10px;
 }
+
+.bi-chevron-left:hover
+{
+    background-color:  #94ce5a;
+    border: #21315a  2px solid;
+    color: #21315a ;
+    font-size: 34px
+}
+
+.bi-chevron-right:hover
+{
+    background-color:  #94ce5a;
+    border: #21315a  2px solid;
+    color: #21315a ;
+    font-size: 34px
+
+}
+
+
+
+/* --------------------------------------------------- */
 
 @media (max-width: 750px) {
     .container {
