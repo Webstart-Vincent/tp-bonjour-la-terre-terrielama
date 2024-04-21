@@ -123,6 +123,16 @@ slidesContainer.addEventListener('touchend', (e) => {
 
 // ------------------puce------------------------------
 
+
+const updateSlide = (index) => {
+  const slideWidth = slidesContainer.offsetWidth;
+  slidesContainer.style.transform = `translateX(-${index * slideWidth}px)`;
+  // Mettre à jour l'apparence des puces
+  puces.forEach((puce, i) => {
+    puce.classList.toggle('active', i === index);
+  });
+};
+
 puce1.addEventListener('click', () => {
   updateSlide(0); 
 });
@@ -135,4 +145,6 @@ puce3.addEventListener('click', () => {
   updateSlide(2); 
 });
 
+// Initialiser le carrousel à la première diapositive
+updateSlide(0);
 
