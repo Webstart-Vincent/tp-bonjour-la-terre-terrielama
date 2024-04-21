@@ -13,7 +13,13 @@ const body = document.querySelector('body')
 /** @type {NodeListOf<HTMLElement>} */
 const sections = document.querySelectorAll('section')
 
-const puces = document.querySelectorAll('.carousel-puce');
+const puce = document.querySelectorAll('.carousel-puce');
+
+// ----------puces--------
+const puce1 = document.querySelector('.puce1');
+const puce2 = document.querySelector('.puce2');
+const puce3 = document.querySelector('.puce3');
+
 
 // ----------------Desktop------------------------------
 
@@ -117,16 +123,16 @@ slidesContainer.addEventListener('touchend', (e) => {
 
 // ------------------puce------------------------------
 
+puce1.addEventListener('click', () => {
+  updateSlide(0); 
+});
+
+puce2.addEventListener('click', () => {
+  updateSlide(1); 
+});
+
+puce3.addEventListener('click', () => {
+  updateSlide(2); 
+});
 
 
-slidesContainer.addEventListener('puce', (e) => 
-{
-  const deltaX = e.touches[0].screenX - touchData.startTouchX
-  if ((index === 0 && deltaX > 0) || (index === maxIndex && deltaX < 0)) return
-  touchData.lastDeltaX = deltaX
-  const basePercentTranslate = index * -100
-  const percentTranslate =
-    basePercentTranslate + (100 * deltaX) / touchData.carouselWidth
- puces.style.transform = `translate(${percentTranslate}%)`
-
-})
