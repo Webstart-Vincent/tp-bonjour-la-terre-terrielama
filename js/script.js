@@ -1,58 +1,132 @@
-
+/** @type {HTMLElement} */
 const previousButton = document.querySelector('.bi-chevron-left')
+
+/** @type {HTMLElement} */
 const nextButton = document.querySelector('.bi-chevron-right')
-const slidesContainer = document.querySelector('.deplacement')
-const bodyColor = document.querySelector("body");
+
+/** @type {HTMLElement} */
+const slidesContainer = document.querySelector('.slides-container')
+
+/** @type {HTMLElement} */
+const body = document.querySelector('body')
+
+/** @type {NodeListOf<HTMLElement>} */
+const sections = document.querySelectorAll('section')
+
+const puces = document.querySelectorAll('.carousel-puce');
+
+// ----------------Desktop------------------------------
+
 let index = 0
 const maxIndex = 2
 
-// ---------------Changer la couleur du fond (body)----------------------------
-
 const setUi = () => {
-    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+  if (index === 0) previousButton.style.display = 'none'
+  else previousButton.style.display = 'grid'
 
-    if (index == 0) {
-        bodyColor.style.backgroundColor = `#242830`;
-    } else if (index == 1) {
-        bodyColor.style.backgroundColor = `#f5f7f8`;
-    } else if (index == 2) {
-        bodyColor.style.backgroundColor = `#000`;
-    }
+  if (index === maxIndex) nextButton.style.display = 'none'
+  else nextButton.style.display = 'grid'
+
+  slidesContainer.style.transform = `translateX(-${index * 100}%)`
+
+  const { backgroundColor } = getComputedStyle(sections[index])
+  body.style.backgroundColor = backgroundColor
+}
+setUi()
+
+previousButton.addEventListener('click', () => {
+  if (index > 0) index--
+  setUi()
+})
+nextButton.addEventListener('click', () => {
+  if (index < maxIndex) index++
+  setUi()
+})
 
 
-//----------------Afficher ou cacher les boutons----------------
+// ----------------touchstart----------------------
 
-    if (index == 0) {
-        previousButton.style.visibility = `hidden`;
-    } else {
-        previousButton.style.visibility = `visible`;
-    }
-    if (index == 1) {
-        previousButton.style.visibility = `visible`;
-    } 
-    
-    if (index == 2) {
-        nextButton.style.visibility = `hidden`;
-    } else {
-        nextButton.style.visibility = `visible`;
-    }
-};
+const touchData = {
 
-previousButton.addEventListener("click", () => {
-    if (index > 0) index--;
+  carouselWidth: slidesContainer.offsetWidth, // Largeur du carrousel
+  startTouchX: 0, // Position du doigt sur l’axe horizontal quand il commence à toucher l’écran
+  lastDeltaX: 0, // Dernier mouvement connu du doigt sur l’axe horizontal
 
-    setUi();
+}
+
+
+// J’écrirai la suite de mon code dans les accolades de chaque callback
+slidesContainer.addEventListener('touchstart', (e) => 
+{
+slidesContainer.addEventListener('touchstart', (e) => {})
+slidesContainer.addEventListener('touchmove', (e) => {})
+slidesContainer.addEventListener('touchend', (e) => {})
+})
+
+slidesContainer.addEventListener('touchstart', (e) =>
+ {
+  touchData.startTouchX = e.touches[0].screenX; // Mettre à jour la position de départ du toucher
 });
-nextButton.addEventListener("click", () => {
-    if (index < maxIndex) index++;
 
-    setUi();
+slidesContainer.addEventListener('touchmove', (e) => {
+  e.preventDefault(); // Empêcher le défilement par défaut
+  
+  const deltaX = e.touches[0].screenX - touchData.startTouchX;
+
+  if ((index === 0 && deltaX > 0) || (index === maxIndex && deltaX < 0)) return;
+
+  touchData.lastDeltaX = deltaX;
+
+  const basePercentTranslate = index * -100;
+  const percentTranslate = basePercentTranslate + (100 * deltaX) / touchData.carouselWidth;
+  slidesContainer.style.transform = `translateX(${percentTranslate}%)`; // Mettre à jour la transformation
 });
-  
 
-  
-  
-  
-  
-  
-  
+// ----------------touchmove----------------------
+
+slidesContainer.addEventListener('touchmove', (e) => 
+{
+  const deltaX = e.touches[0].screenX - touchData.startTouchX
+  if ((index === 0 && deltaX > 0) || (index === maxIndex && deltaX < 0)) return
+  touchData.lastDeltaX = deltaX
+  const basePercentTranslate = index * -100
+  const percentTranslate =
+    basePercentTranslate + (100 * deltaX) / touchData.carouselWidth
+  slidesContainer.style.transform = `translate(${percentTranslate}%)`
+
+})
+
+
+// ------------------touchend-------------------------------
+
+slidesContainer.addEventListener('touchend', (e) => {
+
+  if (Math.abs(touchData.lastDeltaX / touchData.carouselWidth) > 0.1) {
+
+    if (index !== 0 && touchData.lastDeltaX > 0) index--
+
+    if (index !== maxIndex && touchData.lastDeltaX < 0) index++
+
+  }
+
+  slidesContainer.style.transition = ''
+  setUi()
+
+})
+
+
+// ------------------puce------------------------------
+
+
+
+slidesContainer.addEventListener('puce', (e) => 
+{
+  const deltaX = e.touches[0].screenX - touchData.startTouchX
+  if ((index === 0 && deltaX > 0) || (index === maxIndex && deltaX < 0)) return
+  touchData.lastDeltaX = deltaX
+  const basePercentTranslate = index * -100
+  const percentTranslate =
+    basePercentTranslate + (100 * deltaX) / touchData.carouselWidth
+ puces.style.transform = `translate(${percentTranslate}%)`
+
+})
