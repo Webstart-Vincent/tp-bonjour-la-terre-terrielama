@@ -150,20 +150,21 @@ article {
     list-style: none;
     /* background-color: red; */
     text-align: center;
+    
 
   }
   
-  .puce {
+  .puce1,
+  .puce2,
+  .puce3 {
     display: inline-block;
-    padding: 6px;
-    background-color: #21315a;
+    padding: 7px;
     border-color: #94ce5a;
+    background-color: #21315a;
     border-radius: 50%;
-    margin: 0 2px;
+    margin: 0 3px;
     margin-bottom: 10px;
     cursor: pointer;
-
-    
   }
 
  
@@ -203,27 +204,19 @@ article {
     }
 
     .bi-chevron-left,
-
     .bi-chevron-right {
 
         display: none !important;
-
     }
 
-
-
     .wrapper {
-
         height: 100vh;
-
         overflow: scroll;
-
         scroll-snap-type: y mandatory;
 
     }
 
     header,
-
     main {
 
         scroll-snap-align: start;
