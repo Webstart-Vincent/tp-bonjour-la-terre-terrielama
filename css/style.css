@@ -119,7 +119,6 @@ article
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-
     color: #94ce5a;
     border: #94ce5a 2px solid;
     background-color: #21315a;
@@ -154,11 +153,14 @@ article
   }
 
   
-.carousel-puce.active 
+  .puce1.active,
+  .puce2.active,
+  .puce3.active 
   {
     background-color: #94ce5a;
-    border-color: #21315a;
-    transform: scale(1.2);
+    border: 2px solid #21315a;
+    transform: scale(1.4);
+    transition: 0.3s ease-out;
   }
   
   .puce1,
