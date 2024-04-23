@@ -15,10 +15,11 @@ const sections = document.querySelectorAll('section')
 
 const puce = document.querySelectorAll('.carousel-puce');
 
-// ----------puces--------
+// ----------const puces--------
 const puce1 = document.querySelector('.puce1');
 const puce2 = document.querySelector('.puce2');
 const puce3 = document.querySelector('.puce3');
+const puces = document.querySelectorAll('.puce');
 
 
 // ----------------Desktop------------------------------
@@ -37,6 +38,7 @@ const setUi = () => {
 
   const { backgroundColor } = getComputedStyle(sections[index])
   body.style.backgroundColor = backgroundColor
+
 }
 setUi()
 
@@ -50,37 +52,33 @@ nextButton.addEventListener('click', () => {
 })
 
 
-// ----------------touchstart----------------------
+// ---------------------touchstart----------------------
 
 const touchData = {
 
   carouselWidth: slidesContainer.offsetWidth, // Largeur du carrousel
   startTouchX: 0, // Position du doigt sur l’axe horizontal quand il commence à toucher l’écran
   lastDeltaX: 0, // Dernier mouvement connu du doigt sur l’axe horizontal
-
 }
-
 
 // J’écrirai la suite de mon code dans les accolades de chaque callback
 slidesContainer.addEventListener('touchstart', (e) => 
 {
-slidesContainer.addEventListener('touchstart', (e) => {})
-slidesContainer.addEventListener('touchmove', (e) => {})
-slidesContainer.addEventListener('touchend', (e) => {})
+  slidesContainer.addEventListener('touchstart', (e) => {})
+  slidesContainer.addEventListener('touchmove', (e) => {})
+  slidesContainer.addEventListener('touchend', (e) => {})
 })
 
 slidesContainer.addEventListener('touchstart', (e) =>
  {
-  touchData.startTouchX = e.touches[0].screenX; // Mettre à jour la position de départ du toucher
+  touchData.startTouchX = e.touches[0].screenX; 
 });
 
 slidesContainer.addEventListener('touchmove', (e) => {
   e.preventDefault(); // Empêcher le défilement par défaut
-  
   const deltaX = e.touches[0].screenX - touchData.startTouchX;
 
   if ((index === 0 && deltaX > 0) || (index === maxIndex && deltaX < 0)) return;
-
   touchData.lastDeltaX = deltaX;
 
   const basePercentTranslate = index * -100;
@@ -97,54 +95,129 @@ slidesContainer.addEventListener('touchmove', (e) =>
   touchData.lastDeltaX = deltaX
   const basePercentTranslate = index * -100
   const percentTranslate =
-    basePercentTranslate + (100 * deltaX) / touchData.carouselWidth
+  basePercentTranslate + (100 * deltaX) / touchData.carouselWidth
   slidesContainer.style.transform = `translate(${percentTranslate}%)`
 
 })
-
 
 // ------------------touchend-------------------------------
 
 slidesContainer.addEventListener('touchend', (e) => {
 
-  if (Math.abs(touchData.lastDeltaX / touchData.carouselWidth) > 0.1) {
-
-    if (index !== 0 && touchData.lastDeltaX > 0) index--
-
-    if (index !== maxIndex && touchData.lastDeltaX < 0) index++
-
-  }
+    if (Math.abs(touchData.lastDeltaX / touchData.carouselWidth) > 0.1) 
+    {
+      if (index !== 0 && touchData.lastDeltaX > 0) index--
+      if (index !== maxIndex && touchData.lastDeltaX < 0) index++
+    }
 
   slidesContainer.style.transition = ''
-  setUi()
-
+  // Mettre à jour l'interface utilisateur
+    setUi()
 })
 
 
-// ------------------puce------------------------------
 
-
+// mettre à jour l'affichage en fonction de l'index
 const updateSlide = (index) => {
   const slideWidth = slidesContainer.offsetWidth;
   slidesContainer.style.transform = `translateX(-${index * slideWidth}px)`;
-  // Mettre à jour l'apparence des puces
+
+  
+// ------------------puces----------------------------
+
+ 
   puces.forEach((puce, i) => {
-    puce.classList.toggle('active', i === index);
+    if (i === index) {
+      puce.classList.add('active'); 
+    } else {
+      puce.classList.remove('active'); 
+    }
   });
 };
 
+  // fonction pour que le background change quand on click
+const updateBackgroundColor = (index) => {
+  const { backgroundColor } = getComputedStyle(sections[index]);
+  body.style.backgroundColor = backgroundColor;
+  console.log()
+};
+
+
+puces.forEach((puce, i) => {
+  puce.addEventListener('click', () => {
+    updateSlide(i); // Mettre à jour la diapositive lorsque la puce est cliquée
+    index = i;
+    setUi(); 
+  });
+});
+
+// -----------------click sur les puces--------------
+
 puce1.addEventListener('click', () => {
-  updateSlide(0); 
+  updateSlide(0);
+  updateBackgroundColor(0);
+  index = 0; 
+  setUi(); 
 });
 
 puce2.addEventListener('click', () => {
-  updateSlide(1); 
+  updateSlide(1);
+  updateBackgroundColor(1);
+  index = 1; 
+  setUi(); 
 });
 
 puce3.addEventListener('click', () => {
-  updateSlide(2); 
+  updateSlide(2);
+  updateBackgroundColor(2);
+  index = 2; 
+  setUi(); 
 });
 
-// Initialiser le carrousel à la première diapositive
-updateSlide(0);
 
+
+
+// const updatePuces = (index) => {
+//   puces.forEach((puce, i) => {
+//     if (i === index) {
+//       puce.style.backgroundColor = "#94ce5a";
+//       puce.style.border = "#21315a 2px solid";
+//       puce.style.width = "20px";
+//       puce.style.height = "20px";
+//     } else {
+//       puce.style.backgroundColor = "#21315a";
+//       puce.style.border = "#94ce5a 2px solid";
+//       puce.style.width = "15px";
+//       puce.style.height = "15px";
+//     }
+//   });
+// };
+
+
+
+// -----------------click sur les puces--------------
+
+
+// puce1.addEventListener('click', () => {
+//   index = 0;
+//   updateSlide(index);
+//   updateBackgroundColor(index);
+//   updatePuces(index); 
+//   setUi(); 
+// });
+
+// puce2.addEventListener('click', () => {
+//   index = 1;
+//   updateSlide(index);
+//   updateBackgroundColor(index);
+//   updatePuces(index); 
+//   setUi(); 
+// });
+
+// puce3.addEventListener('click', () => {
+//   index = 2;
+//   updateSlide(index);
+//   updateBackgroundColor(index);
+//   updatePuces(index); 
+//   setUi(); 
+// });
