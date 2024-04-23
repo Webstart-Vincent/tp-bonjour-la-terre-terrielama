@@ -44,10 +44,12 @@ setUi()
 
 previousButton.addEventListener('click', () => {
   if (index > 0) index--
+  // updatePuces(index);
   setUi()
 })
 nextButton.addEventListener('click', () => {
   if (index < maxIndex) index++
+  // updatePuces(index);
   setUi()
 })
 
@@ -126,11 +128,13 @@ const updateSlide = (index) => {
 // ------------------puces----------------------------
 
  
-  puces.forEach((puce, i) => {
-    if (i === index) {
+puces.forEach((puce, i) => {
+  if (i === index) 
+    {
       puce.classList.add('active'); 
-    } else {
-      puce.classList.remove('active'); 
+   } else 
+      {
+      puce.classList.remove('active');
     }
   });
 };
@@ -157,13 +161,19 @@ puce1.addEventListener('click', () => {
   updateSlide(0);
   updateBackgroundColor(0);
   index = 0; 
-  setUi(); 
+  puce1.classList.add('active');
+  puce2.classList.remove('active');
+  puce3.classList.remove('active');
+  setUi();
 });
 
 puce2.addEventListener('click', () => {
   updateSlide(1);
   updateBackgroundColor(1);
   index = 1; 
+  puce2.classList.add('active');
+  puce1.classList.remove('active');
+  puce3.classList.remove('active');
   setUi(); 
 });
 
@@ -171,7 +181,10 @@ puce3.addEventListener('click', () => {
   updateSlide(2);
   updateBackgroundColor(2);
   index = 2; 
-  setUi(); 
+  puce3.classList.add('active');
+  puce1.classList.remove('active');
+  puce2.classList.remove('active');
+   setUi(); 
 });
 
 
