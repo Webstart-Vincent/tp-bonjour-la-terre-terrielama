@@ -257,10 +257,3 @@ article
     scroll-snap-align: start;
     }
 }
-
-@media (min-width: 750px) {
-.carousel-puce
-{
-    display: none;
-}
-}
