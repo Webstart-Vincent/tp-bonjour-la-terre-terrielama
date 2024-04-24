@@ -19,10 +19,9 @@ const puce = document.querySelectorAll('.carousel-puce');
 const puce1 = document.querySelector('.puce1');
 const puce2 = document.querySelector('.puce2');
 const puce3 = document.querySelector('.puce3');
-const puces = document.querySelectorAll('.puce');
+// puce dans un tableau
+const puces = [puce1, puce2, puce3]; 
 
-
-// ----------------Desktop------------------------------
 
 let index = 0
 const maxIndex = 2
@@ -39,19 +38,27 @@ const setUi = () => {
   const { backgroundColor } = getComputedStyle(sections[index])
   body.style.backgroundColor = backgroundColor
 
-}
+    puces.forEach((puce, i) => {
+        if (i === index) {
+            puce.classList.add('active');
+        } else {
+            puce.classList.remove('active');
+        }
+    });
+};
+
 setUi()
 
 previousButton.addEventListener('click', () => {
   if (index > 0) index--
-  // updatePuces(index);
+
   setUi()
 })
 nextButton.addEventListener('click', () => {
   if (index < maxIndex) index++
-  // updatePuces(index);
   setUi()
 })
+
 
 
 // ---------------------touchstart----------------------
@@ -72,7 +79,7 @@ slidesContainer.addEventListener('touchstart', (e) =>
 })
 
 slidesContainer.addEventListener('touchstart', (e) =>
- {
+{
   touchData.startTouchX = e.touches[0].screenX; 
 });
 
@@ -112,8 +119,8 @@ slidesContainer.addEventListener('touchend', (e) => {
       if (index !== maxIndex && touchData.lastDeltaX < 0) index++
     }
 
-  slidesContainer.style.transition = ''
   // Mettre à jour l'interface utilisateur
+  slidesContainer.style.transition = ''
     setUi()
 })
 
@@ -127,12 +134,12 @@ const updateSlide = (index) => {
   
 // ------------------puces----------------------------
 
- 
+
 puces.forEach((puce, i) => {
   if (i === index) 
     {
       puce.classList.add('active'); 
-   } else 
+  } else 
       {
       puce.classList.remove('active');
     }
@@ -146,7 +153,6 @@ const updateBackgroundColor = (index) => {
   console.log()
 };
 
-
 puces.forEach((puce, i) => {
   puce.addEventListener('click', () => {
     updateSlide(i); // Mettre à jour la diapositive lorsque la puce est cliquée
@@ -157,80 +163,15 @@ puces.forEach((puce, i) => {
 
 // -----------------click sur les puces--------------
 
-puce1.addEventListener('click', () => {
-  updateSlide(0);
-  updateBackgroundColor(0);
-  index = 0; 
-  puce1.classList.add('active');
-  puce2.classList.remove('active');
-  puce3.classList.remove('active');
+puce1.addEventListener("click", () => {
+  if (((index = 1), (index = 2))) index = 0;
   setUi();
 });
-
-puce2.addEventListener('click', () => {
-  updateSlide(1);
-  updateBackgroundColor(1);
-  index = 1; 
-  puce2.classList.add('active');
-  puce1.classList.remove('active');
-  puce3.classList.remove('active');
-  setUi(); 
+puce2.addEventListener("click", () => {
+  if (((index = 0), (index = 2))) index = 1;
+  setUi();
 });
-
-puce3.addEventListener('click', () => {
-  updateSlide(2);
-  updateBackgroundColor(2);
-  index = 2; 
-  puce3.classList.add('active');
-  puce1.classList.remove('active');
-  puce2.classList.remove('active');
-   setUi(); 
+puce3.addEventListener("click", () => {
+  if (((index = 0), (index = 1))) index = 2;
+  setUi();
 });
-
-
-
-
-// const updatePuces = (index) => {
-//   puces.forEach((puce, i) => {
-//     if (i === index) {
-//       puce.style.backgroundColor = "#94ce5a";
-//       puce.style.border = "#21315a 2px solid";
-//       puce.style.width = "20px";
-//       puce.style.height = "20px";
-//     } else {
-//       puce.style.backgroundColor = "#21315a";
-//       puce.style.border = "#94ce5a 2px solid";
-//       puce.style.width = "15px";
-//       puce.style.height = "15px";
-//     }
-//   });
-// };
-
-
-
-// -----------------click sur les puces--------------
-
-
-// puce1.addEventListener('click', () => {
-//   index = 0;
-//   updateSlide(index);
-//   updateBackgroundColor(index);
-//   updatePuces(index); 
-//   setUi(); 
-// });
-
-// puce2.addEventListener('click', () => {
-//   index = 1;
-//   updateSlide(index);
-//   updateBackgroundColor(index);
-//   updatePuces(index); 
-//   setUi(); 
-// });
-
-// puce3.addEventListener('click', () => {
-//   index = 2;
-//   updateSlide(index);
-//   updateBackgroundColor(index);
-//   updatePuces(index); 
-//   setUi(); 
-// });
