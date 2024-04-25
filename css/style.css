@@ -4,7 +4,7 @@ body
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    /* transition: background-color 0.9s ease-out; */
+    transition: background-color 0.9s ease-out;
 }
 
 header 
@@ -59,13 +59,13 @@ main
 {
     display: flex;
     transform: translate(16.5445%);
-    /* transition: 0.3s ease-out; */
+    transition: 0.3s ease-out;
 
 }
 
 section 
 {
-    padding: 20px;
+    padding: 20px 80px;
     padding-right: 70px;
     width: 100%;
     flex-shrink: 0;
@@ -90,7 +90,7 @@ section
 .container 
 {
     display: grid;
-    grid-template-columns: 7fr 6fr;
+    grid-template-columns: 7fr 5fr;
     gap: 20px;
     align-items: center;
 }
@@ -130,7 +130,7 @@ article
     justify-items: center;
     font-size: 34px;
     cursor: pointer;
-    /* transition: 0.6s ease-in; */
+    transition: 0.4s ease-in;
     z-index: 1;
     animation: buttonsFloating 5s infinite alternate;
 }
@@ -147,28 +147,32 @@ article
 
 .carousel-puce
   {
-    list-style: none;
-    text-align: center;
-   /* background-color: red; */
-  }
+    position: absolute;
+    top: calc(min(100%, 100vh) - 40px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
 
-  
-  .puce1.active,
-  .puce2.active,
-  .puce3.active 
-  {
+.puce1.active,
+.puce2.active,
+.puce3.active 
+{
     background-color: #94ce5a;
     border: 2px solid #21315a;
     transform: scale(1.4);
     transition: 0.3s ease-out;
-  }
-  
-  .puce1,
-  .puce2,
-  .puce3 
-  {
+}
+
+.puce1,
+.puce2,
+.puce3 
+{
     display: inline-block;
-    padding: 6px;
+    /* padding: 6px; */
+    width: 20px;
+    height: 20px;
     background-color: #21315a;
     border: 2px solid #94ce5a; 
     border-radius: 50%;
@@ -176,9 +180,7 @@ article
     margin-bottom: 10px;
     cursor: pointer;
 
-  }
-
-  
+}
 
 /* --------------mobile: media query----------------- */
 
@@ -188,6 +190,7 @@ article
         grid-template-columns: 1fr;
         gap: 0;
     }
+
     article 
     {
         order: -1;
@@ -216,6 +219,7 @@ article
 
     section {
         padding: 20px;
+        padding-bottom: 0%;
         align-items: start;
 
 
@@ -256,4 +260,12 @@ article
     {
     scroll-snap-align: start;
     }
+
 }
+
+/* @media (min-width: 750px) {
+.carousel-puce
+{
+    display: none;
+}
+} */
