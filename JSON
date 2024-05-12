@@ -1,0 +1,180 @@
+{
+
+  "coord": {
+
+    "lon": -154.4678,
+
+    "lat": 61.9892
+
+  },
+
+  "weather": [
+
+    {
+
+      "id": 600,
+
+      "main": "Snow",
+
+      "description": "légères chutes de neige",
+
+      "icon": "13n"
+
+    }
+
+  ],
+
+  "base": "stations",
+
+  "main": {
+
+    "temp": -10.58,
+
+    "feels_like": -10.58,
+
+    "temp_min": -10.58,
+
+    "temp_max": -10.58,
+
+    "pressure": 1029,
+
+    "humidity": 99,
+
+    "sea_level": 1029,
+
+    "grnd_level": 961
+
+  },
+
+  "visibility": 1137,
+
+  "wind": {
+
+    "speed": 0.63,
+
+    "deg": 219,
+
+    "gust": 0.66
+
+  },
+
+  "snow": {
+
+    "1h": 0.12
+
+  },
+
+  "clouds": {
+
+    "all": 100
+
+  },
+
+  "dt": 1679733415,
+
+  "sys": {
+
+    "country": "US",
+
+    "sunrise": 1679760160,
+
+    "sunset": 1679805891
+
+  },
+
+  "timezone": -28800,
+
+  "id": 5870787,
+
+  "name": "Old Village (historical)",
+
+  "cod": 200
+
+}
+"weather": [
+
+  {
+
+      "id": 600,
+
+      "main": "Snow",
+
+      "description": "légères chutes de neige",
+
+      "icon": "13n"
+
+  }
+
+],
+
+"main": {
+
+    "temp": -10.58,
+
+    "feels_like": -10.58,
+
+    "temp_min": -10.58,
+
+    "temp_max": -10.58,
+
+    "pressure": 1029,
+
+    "humidity": 99,
+
+    "sea_level": 1029,
+
+    "grnd_level": 961
+
+},
+
+"weather": [
+
+    {
+
+        "id": 600,
+
+        "main": "Snow",
+
+        "description": "légères chutes de neige",
+
+        "icon": "13n"
+
+    }
+
+],
+
+"main": {
+
+    "temp": -10.58,
+
+    "feels_like": -10.58,
+
+    "temp_min": -10.58,
+
+    "temp_max": -10.58,
+
+    "pressure": 1029,
+
+    "humidity": 99,
+
+    "sea_level": 1029,
+
+    "grnd_level": 961
+
+},
+
+"weather": [
+
+    {
+
+        "id": 600,
+
+        "main": "Snow",
+
+        "description": "légères chutes de neige",
+
+        "icon": "13n"
+
+    }
+
+],
