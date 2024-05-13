@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="style.css" />
 
     <script src="./script.js" defer></script>
+    <!-- <script src="weatherApp.js"defer></script>
+    <script src="loadData.js"defer></script> -->
   </head>
   <body>
     <div class="wrapper">
@@ -97,28 +99,36 @@
           <button aria-label="Aller à la troisième diapositive"></button>
         </div>
       </main>
-<div class="module">
-      <div class="meteo">
-        <div class="container">
-          <div class="sidebar">
-            <button class="country-button">France</button>
-            <button class="country-button">Alaska</button>
-            <button class="country-button">Japon</button>
-            <button class="country-button">Mont Kilimandjaro</button>
-            <button class="country-button">Mexique</button>
-          </div>
-          <div class="main-content">
-            <div class="weather">
-              <div class="weather-info">
-                <div class="weather-description"></div>
-                <div class="weather-temperature"></div>
-              </div>
-              <img class="weather-icon" src="">
-            </div>
-          </div>
-        </div>
-        </div>
 
+      <!-- ----------------------meteo------------------------ -->
+      <div class="container-meteo">
+        <div class="content">
+          <aside class="sidebar">
+            <div class="location-list">
+              <button class="location-button" data-index="0">France</button>
+              <div class="location-sublist">
+                <button class="location-subbutton" data-index="1">
+                  <div class="location-name">Alaska</div>
+                  <img src="" alt="" class="arrow-icon" />
+                </button>
+              </div>
+              <button class="location-button" data-index="2">Japon</button>
+              <button class="location-button" data-index="3">Mont Kilimandjaro</button>
+              <button class="location-button" data-index="4">Mexique</button>
+            </div>
+          </aside>
+          <main class="main-content">
+            <div class="weather-info">
+              <div class="weather-bar"></div>
+              <div class="weather-details">
+                <div class="weather-condition"></div>
+                <div class="temperature"></div>
+                <img src="" alt="Weather condition" class="weather-image" id="weatherIcon" />
+              </div>
+            </div>
+          </main>
+        </div>
+    </div>
       <!-- ------------------------------------- -->
     </div>
   </body>

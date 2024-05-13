@@ -1,0 +1,33 @@
+[
+  
+  {
+    "name": "France",
+    "temperature": 19,
+    "description": "Pluvieux",
+    "icon": "09d"
+  },
+  {
+    "name": "Alaska",
+    "temperature": -10.58,
+    "description": "Légères chutes de neige",
+    "icon": "13n"
+  },
+  {
+    "name": "Japon",
+    "temperature": 17,
+    "description": "Très nuageux",
+    "icon": "04d"
+  },
+  {
+    "name": "Mont Kilimanjaro",
+    "temperature": 12,
+    "description": "Partiellement nuageux",
+    "icon": "02d"
+  },
+  {
+    "name": "Mexique",
+    "temperature": 18,
+    "description": "Dégagé",
+    "icon": "01n"
+  }
+]

@@ -16,10 +16,14 @@ const sections = document.querySelectorAll('section')
 /** @type {NodeListOf<HTMLElement>} */
 const bullets = document.querySelectorAll('.bullets > button')
 
-const locationItems = document.querySelectorAll('.location-item')
-const weatherDescription = document.querySelector('.weather-description')
-const weatherTemperature = document.querySelector('.weather-temperature')
-const weatherIcon = document.querySelector('.weather-icon')
+      // Mettre à jour les éléments HTML avec les données météorologiques
+      // Sélection des boutons de localisation
+
+
+const weatherDescriptionElement = document.querySelector('.weather-condition');
+    const weatherTemperatureElement = document.querySelector('.temperature');
+    const weatherIconElement = document.querySelector('.weather-image');
+    const locationButtons = document.querySelectorAll('.location-button, .location-subbutton');
 
 // -----------------------------------------
 let index = 0
@@ -91,45 +95,64 @@ for (let i = 0; i < bullets.length; i++)
     setUi()
   })
 
-// -------------------------------------
+// -----------------------meteo-------------------------------
 
+  // Données météorologiques provenant du JSON
+  const jsonWeatherData = [
+    {
+      "name": "France",
+      "temperature": 19,
+      "description": "Pluvieux",
+      "icon": "09d"
+    },
+    {
+      "name": "Alaska",
+      "temperature": -10.58,
+      "description": "Légères chutes de neige",
+      "icon": "13n"
+    },
+    {
+      "name": "Japon",
+      "temperature": 17,
+      "description": "Très nuageux",
+      "icon": "04d"
+    },
+    {
+      "name": "Mont Kilimanjaro",
+      "temperature": 12,
+      "description": "Partiellement nuageux",
+      "icon": "02d"
+    },
+    {
+      "name": "Mexique",
+      "temperature": 18,
+      "description": "Dégagé",
+      "icon": "01n"
+    }
+  ];
 
+  
+  function updateWeatherInfo(index) {
+    const weatherData = jsonWeatherData[index];
+    if (weatherData) {
+      weatherDescriptionElement.textContent = weatherData.description;
+      weatherTemperatureElement.textContent = weatherData.temperature + ' °C';
+      weatherIconElement.src = `./icons/${weatherData.icon}.svg`;
 
-// Fonction pour récupérer les données météorologiques d'un lieu
-function getWeatherData(lat, lon, lang, units, appid) {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=${lang}&units=${units}&appid=${appid}`;
+      
+    } else {
+      console.error('Données météorologiques non trouvées.');
+    }
+  }
 
-  // Effectuer une requête fetch vers l'API OpenWeather
-  fetch(apiUrl)
-    .then((response) => {
-      // Vérifier si la requête a réussi
-      if (!response.ok) {
-        throw new Error('Erreur de récupération des données météorologiques.')
-      }
-      // Si la requête est réussie, analyser la réponse JSON
-      return response.json()
-    })
-    .then((data) => {
-      // Traiter les données météorologiques
-      const weatherDescription = data.weather[0].description; // Description météo
-      const temperature = data.main.temp; // Température
-
-      // Utilisez ces données comme vous le souhaitez, par exemple :
-      console.log('Description météo :', weatherDescription);
-      console.log('Température :', temperature);
-    })
-    .catch((error) => {
-      // Gérer les erreurs de récupération des données météorologiques
-      console.error('Erreur :', error);
-    })
-    .finally(() => {
-      // Passer à la prochaine clé API dans le tableau
-      apiKeyIndex = (apiKeyIndex + 1) % apiKeys.length;
+  // Écouteurs d'événements pour chaque bouton de localisation
+  locationButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      updateWeatherInfo(index);
     });
-}
+  });
 
 
-// Exemple d'utilisation : récupérer les données météorologiques de l'Alaska
-// getWeatherData(61.989154, -154.467778)
-// ou de paris
-// getWeatherData(48.8566, 2.3522);
+
+  // Affichage initial des données pour la première localisation
+  updateWeatherInfo(0);

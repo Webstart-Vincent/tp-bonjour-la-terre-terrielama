@@ -136,83 +136,177 @@ article {
 
 /* --------------meteo---------------------- */
 
-.module
-{
-  margin-top: 30px;
-  padding: 20px;
+.container-meteo {
   background-color: #21315a;
-
+  padding: 30px;
 }
 
-.meteo
-{
-  margin-top: 30px;
-    background-color: #21315a;
-    grid-template-columns: 5fr 7fr;
+.content {
+  background-color: #21315a;
+
+  max-width: 960px;
+  display: grid;
+  /* align-content: center; */
+  grid-template-columns: 5fr 7fr;
+  display: flex;
+  margin: auto;
+}
+
+
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  width: 372px;
+  margin-left: 0;
+  /* background-color: blue; */
+
   
 }
 
-.meteo .container {
 
-  display: grid;
-   max-width: 960px;
-   margin: auto; justify-content: center;
-        border-color: rgba(148, 206, 90, 1);
-      border-style: solid;
-      border-top-width: 1px;
-      border-right-width: 1px;
-      border-bottom-width: 1px;
-      color: #94ce5a;
-      text-align: center;
-      padding: 20px 10px 9px 10px;
-}
 
-.sidebar { 
-
-  width: auto;
-  display: flex;
+.location-list {
+  /* align-self: stretch; */
+  /* border-right: 1px solid #94ce5a; */
+  /* display: flex; */
+  flex-grow: 1;
+  padding-bottom: 80px;
   flex-direction: column;
-  gap: 10px;
+  font-size: 24px;
+  color: #94ce5a;
+  font-weight: 400;
+  text-align: end;
 
- 
+
+  /* background-color: red; */
+
 }
 
-.country-button {
+
+
+
+.location-button {
   font-family: Roboto, sans-serif;
-  white-space: nowrap;
-  padding: 10px ;
-  background:none;
-  border-color:1px solid rgba(148, 206, 90, 1);
-  color: inherit;
+  justify-content: center; 
+   /* align-items: end;  */
+  padding: 10px 60px;
   cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  /* font: inherit; */
+  text-align:right;
+  
+}
+
+.location-button button
+{
+
+  
+}
+
+.location-sublist {
+  justify-content: center;
+  border-right: 1px solid #21315a;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: column;
+  
+}
+
+
+.location-subbutton {
+  justify-content: end;
+      /* border: 1px solid #94ce5a; */
+      border-right: none;
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      cursor: pointer;
+      background: none;
+      color: inherit;
+      font: inherit;
+}
+
+.location-subbutton.active {
+   border-color: #94ce5a; 
+}
+
+.location-subbutton.active .weatherIcon {
+  fill: #94ce5a; 
+}
+
+
+
+.location-name {
+  /* display: none; */
+}
+
+.arrow-icon {
+  width: 9px;
+  fill: #94ce5a;
+  margin: auto 0;
 }
 
 .main-content {
-  flex-grow: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  line-height: normal;
+  width: 60%;
+  margin-left: 20px;
 }
 
-.weather {
+
+
+.weather-info {
+  justify-content: center;
+  align-self: stretch;
+  border-right: 1px solid #94ce5a;
+  border-top: 1px solid #94ce5a;
+  border-bottom: 1px solid #94ce5a;
+  border-left: hidden;
   display: flex;
-  align-items: center;
+  flex-grow: -1;
   gap: 20px;
   color: #94ce5a;
+  text-align: center;
+  padding: 20px;
 }
 
-.weather-description {
+
+
+.weather-bar {
+  background-color: #21315a;
+  align-self: start;
+  margin-top: 11px;
+  width: 10px;
+  height: 46px;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-condition {
   font: 400 32px Roboto, sans-serif;
 }
 
-.weather-temperature {
+.temperature {
   font: 900 64px Roboto, sans-serif;
 }
 
-.weather-icon {
-  width: 100px;
-}
 
+.weather-image {
+  width: 250px;
+height: 250px;
+gap: 0px;
+opacity: 0px;
+
+}
 
 /* --------------------------------------- */
 
@@ -261,24 +355,102 @@ article {
 /* -------------------meteo--------------
  */
 
+
+
 @media (max-width: 750px) {
-  .location-container {
-    margin-top: 20px;
-  }
 
-  .current-location {
-    justify-content: center;
-    border-right: 1px solid rgba(33, 49, 90, 1);
-    display: flex;
-    flex-direction: column;
-  }
-
-  .location-info {
-    justify-content: end;
-    border: 1px solid rgba(148, 206, 90, 1);
-    border-right: none;
-    display: flex;
-    gap: 10px;
-    padding: 1px 0 1px 10px;
-  }
+.container-meteo
+{
+  display: grid;
+  align-items: center;
+  min-width: 100hv;
+ 
 }
+
+
+.content {
+  flex-direction:column-reverse;
+   grid-template-columns: 1fr;
+  order: -1;
+  
+}
+
+
+.weather-info {
+  border: none;
+  padding: 10px ; 
+  align-items: center;
+  /* background-color: red; */
+}
+
+.weather-bar {
+  display: none; 
+
+}
+
+.weather-details {
+  /* background-color: rebeccapurple; */
+  padding: 50px;
+  margin-left: 80px;
+}
+
+.temperature {
+  font-size: 42px; /
+}
+
+.weather-condition {
+  font-size: 24px;
+}
+
+.weather-image {
+  width: 150px; /* Réduisez la taille de l'icône */
+  height: auto; /* Ajustez la hauteur en conséquence */
+}
+
+
+/* .location-list {
+  position: relative;
+  bottom: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+ 
+  justify-content: space-around;
+  padding: 0px 0; 
+} */
+
+.location-list {
+ margin-right: 35px;
+ justify-content: center; 
+ display: inline;
+}
+ 
+
+.location-button {
+  border: 1px solid #94ce5a;
+  margin: 5px; 
+  padding: 10px;
+  width: fit-content;
+
+  
+  
+  
+}
+
+
+.location-subbutton
+{
+  border: 1px solid #94ce5a;
+  margin: 5px; 
+  width: fit-content;
+
+}
+
+.location-sublist
+{
+  width: fit-content;
+}
+
+}
+
