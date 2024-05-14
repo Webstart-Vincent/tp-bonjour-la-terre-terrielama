@@ -131,19 +131,28 @@ for (let i = 0; i < bullets.length; i++)
     }
   ];
 
-  
   function updateWeatherInfo(index) {
     const weatherData = jsonWeatherData[index];
     if (weatherData) {
-      weatherDescriptionElement.textContent = weatherData.description;
-      weatherTemperatureElement.textContent = weatherData.temperature + ' °C';
-      weatherIconElement.src = `./icons/${weatherData.icon}.svg`;
-
-      
+      // Afficher "Chargement" pendant le chargement
+      weatherDescriptionElement.textContent = "Chargement...";
+      weatherTemperatureElement.textContent = '';
+      // Afficher le loader.svg
+      weatherIconElement.src = `./icons/loader.svg`;
+  
+      // Après 3 secondes, remplacer le loader par l'icône météo
+      setTimeout(() => {
+        weatherDescriptionElement.textContent = weatherData.description;
+        weatherTemperatureElement.textContent = weatherData.temperature + ' °C';
+        weatherIconElement.src = `./icons/${weatherData.icon}.svg`;
+      }, 2000); // 2000 millisecondes = 2 secondes
     } else {
       console.error('Données météorologiques non trouvées.');
     }
   }
+  
+  
+
 
   // Écouteurs d'événements pour chaque bouton de localisation
   locationButtons.forEach((button, index) => {

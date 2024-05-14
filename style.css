@@ -139,7 +139,10 @@ article {
 .container-meteo {
   background-color: #21315a;
   padding: 30px;
+  height: 460px; /* Définissez une hauteur fixe */
+  overflow: hidden; /* Masquez le débordement du contenu */
 }
+
 
 .content {
   background-color: #21315a;
@@ -161,11 +164,27 @@ article {
   width: 372px;
   margin-left: 0;
   /* background-color: blue; */
-
   
 }
 
 
+
+.weather-info {
+  height:400px; 
+  justify-content: center;
+  border-right: 1px solid #94ce5a;
+  border-top: 1px solid #94ce5a;
+  border-bottom: 1px solid #94ce5a;
+  border-left: 1px solid #94ce5a;
+  display: flex;
+  gap: 20px;
+  color: #94ce5a;
+  text-align: center;
+  padding: 20px;
+
+  
+
+}
 
 .location-list {
   /* align-self: stretch; */
@@ -179,8 +198,6 @@ article {
   font-weight: 400;
   text-align: end;
 
-
-  /* background-color: red; */
 
 }
 
@@ -201,11 +218,6 @@ article {
   
 }
 
-.location-button button
-{
-
-  
-}
 
 .location-sublist {
   justify-content: center;
@@ -240,10 +252,6 @@ article {
 
 
 
-.location-name {
-  /* display: none; */
-}
-
 .arrow-icon {
   width: 9px;
   fill: #94ce5a;
@@ -260,23 +268,6 @@ article {
 
 
 
-.weather-info {
-  justify-content: center;
-  align-self: stretch;
-  border-right: 1px solid #94ce5a;
-  border-top: 1px solid #94ce5a;
-  border-bottom: 1px solid #94ce5a;
-  border-left: hidden;
-  display: flex;
-  flex-grow: -1;
-  gap: 20px;
-  color: #94ce5a;
-  text-align: center;
-  padding: 20px;
-}
-
-
-
 .weather-bar {
   background-color: #21315a;
   align-self: start;
@@ -286,6 +277,7 @@ article {
 }
 
 .weather-details {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -307,7 +299,6 @@ gap: 0px;
 opacity: 0px;
 
 }
-
 /* --------------------------------------- */
 
 @media (max-width: 750px) {
@@ -361,96 +352,127 @@ opacity: 0px;
 
 .container-meteo
 {
-  display: grid;
-  align-items: center;
-  min-width: 100hv;
- 
+  height: 90%;
+  left: 20px;
+  padding: 20px 0px 0px 0px;
+  gap: 10px;
+  scroll-behavior: smooth; 
+  scroll-snap-align: start;
+
 }
 
 
 .content {
   flex-direction:column-reverse;
-   grid-template-columns: 1fr;
-  order: -1;
+   grid-template-columns: 1fr ;
+   order: -1;
   
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrer horizontalement */
+  justify-content: center; /* Centrer verticalement */
+}
 
 .weather-info {
   border: none;
-  padding: 10px ; 
+  width: 100%; 
+  padding: 10px;
   align-items: center;
-  /* background-color: red; */
+  margin: auto; /* Centrer horizontalement */
 }
 
-.weather-bar {
-  display: none; 
 
-}
 
 .weather-details {
-  /* background-color: rebeccapurple; */
-  padding: 50px;
-  margin-left: 80px;
+  width: 100%;
+  margin: auto ;
+  text-align: center; 
+  display: flex;
+  margin-left: 50%;
+  /* flex-direction: column; */
+  justify-content: center; 
+  width: 100%; 
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  line-height: normal;
+  width: 100%;
+  margin-left: 0;
+  align-items: center;
+}
+
+.location-list {
+  width: auto; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.location-button {
+  font-family: Roboto, sans-serif;
+  white-space: nowrap;
+  padding: 15px 25px; 
+  cursor: pointer;
+  background: none;
+  border: 1px solid #94ce5a;
+  color: inherit;
+  font: inherit;
+  margin: 5px; 
+  font-size: 17px; 
+  width: fit-content;
+  
+}
+
+.location-sublist
+{
+  width: 100%; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+/* Aligner horizontalement les trois premiers boutons */
+.location-list > .location-button:nth-child(-n+3) {
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+/* Afficher les deux derniers boutons en dessous l'un à côté de l'autre */
+.location-list > .location-button:nth-child(n+4) {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+
+
+.weather-condition {
+  font-size: 20px;
+}
+
 
 .temperature {
   font-size: 42px; /
 }
 
-.weather-condition {
-  font-size: 24px;
-}
 
 .weather-image {
-  width: 150px; /* Réduisez la taille de l'icône */
-  height: auto; /* Ajustez la hauteur en conséquence */
+  width: 150px; 
+  height: auto; 
 }
 
-
-/* .location-list {
-  position: relative;
-  bottom: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
-
- 
-  justify-content: space-around;
-  padding: 0px 0; 
-} */
-
-.location-list {
- margin-right: 35px;
- justify-content: center; 
- display: inline;
-}
- 
-
-.location-button {
-  border: 1px solid #94ce5a;
-  margin: 5px; 
-  padding: 10px;
-  width: fit-content;
-
-  
-  
-  
-}
-
-
-.location-subbutton
-{
-  border: 1px solid #94ce5a;
-  margin: 5px; 
-  width: fit-content;
-
-}
-
-.location-sublist
-{
-  width: fit-content;
-}
 
 }
 
