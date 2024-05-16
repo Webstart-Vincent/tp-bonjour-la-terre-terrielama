@@ -137,12 +137,12 @@ for (let i = 0; i < bullets.length; i++)
       weatherTemperatureElement.textContent = "";
       weatherIconElement.src = "./icons/loader.svg"; // Affichez le loader
   
-      // Après 3 secondes, affichez les vraies données
+      // Après quelques secondes, affichez les vraies données
       setTimeout(() => {
         weatherDescriptionElement.textContent = weatherData.description;
         weatherTemperatureElement.textContent = weatherData.temperature + ' °C';
         weatherIconElement.src = `./icons/${weatherData.icon}.svg`;
-      }, 3000); // 3000 millisecondes = 3 secondes
+      }, 1900); 
     } else {
       console.error('Données météorologiques non trouvées.');
     }
@@ -160,7 +160,7 @@ for (let i = 0; i < bullets.length; i++)
     });
   });
   
-  // Affichage initial des données pour la première localisation
+  // reload de la première localisation
   updateWeatherInfo(0);
   
 
