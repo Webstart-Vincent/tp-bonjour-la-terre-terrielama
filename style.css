@@ -203,7 +203,6 @@ article {
 
 
 
-
 .location-button {
   font-family: Roboto, sans-serif;
   justify-content: center; 
@@ -215,7 +214,13 @@ article {
   color: inherit;
   /* font: inherit; */
   text-align:right;
+  /* border: 1px solid #94ce5a; */
+  margin-bottom: 5px;
   
+}
+
+.location-button.active {
+  border: 1px solid #94ce5a; /* Bordure pour les boutons actifs */
 }
 
 
@@ -242,13 +247,8 @@ article {
       font: inherit;
 }
 
-.location-subbutton.active {
-   border-color: #94ce5a; 
-}
 
-.location-subbutton.active .weatherIcon {
-  fill: #94ce5a; 
-}
+
 
 
 
@@ -265,6 +265,16 @@ article {
   width: 60%;
   margin-left: 20px;
 }
+
+.actived {
+  border : 1px solid #94ce5a;
+  }
+  .actived::after{
+      content:'\003E';
+      color: #94ce5a;
+      position: absolute;
+      margin-left: 4px;
+  }
 
 
 

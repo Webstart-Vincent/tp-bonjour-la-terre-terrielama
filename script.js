@@ -130,27 +130,38 @@ for (let i = 0; i < bullets.length; i++)
       "icon": "01n"
     }
   ];
-
   function updateWeatherInfo(index) {
     const weatherData = jsonWeatherData[index];
     if (weatherData) {
-      // Afficher "Chargement" pendant le chargement
       weatherDescriptionElement.textContent = "Chargement...";
-      weatherTemperatureElement.textContent = '';
-      // Afficher le loader.svg
-      weatherIconElement.src = `./icons/loader.svg`;
+      weatherTemperatureElement.textContent = "";
+      weatherIconElement.src = "./icons/loader.svg"; // Affichez le loader
   
-      // Après 3 secondes, remplacer le loader par l'icône météo
+      // Après 3 secondes, affichez les vraies données
       setTimeout(() => {
         weatherDescriptionElement.textContent = weatherData.description;
         weatherTemperatureElement.textContent = weatherData.temperature + ' °C';
         weatherIconElement.src = `./icons/${weatherData.icon}.svg`;
-      }, 2000); // 2000 millisecondes = 2 secondes
+      }, 3000); // 3000 millisecondes = 3 secondes
     } else {
       console.error('Données météorologiques non trouvées.');
     }
   }
   
+  // Écouteurs d'événements pour chaque bouton de localisation
+  locationButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      // Retirer la classe active de tous les boutons
+      locationButtons.forEach(btn => btn.classList.remove('active'));
+      // Ajouter la classe active au bouton cliqué
+      button.classList.add('active');
+      // Mettre à jour les informations météorologiques
+      updateWeatherInfo(index);
+    });
+  });
+  
+  // Affichage initial des données pour la première localisation
+  updateWeatherInfo(0);
   
 
 
